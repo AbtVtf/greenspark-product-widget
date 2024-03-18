@@ -6,7 +6,7 @@ type ToggleProps = {
   onToggle: () => void;
 };
 
-export const Toggle: React.FC<ToggleProps> = ({ selected, onToggle }) => {
+export const Toggle = ({ selected, onToggle }: ToggleProps) => {
   return (
     <SwitchInput
       className="switch"

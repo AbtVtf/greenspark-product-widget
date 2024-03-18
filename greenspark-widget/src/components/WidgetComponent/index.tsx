@@ -37,6 +37,14 @@ interface Colors {
   [key: string]: string;
 }
 
+const colors: Colors = {
+  blue: "#2E3A8C",
+  green: "#3B755F",
+  beige: "#F2EBDB",
+  white: "#FFFFFF",
+  black: "#212121",
+};
+
 const Widget = ({
   id,
   action,
@@ -47,15 +55,8 @@ const Widget = ({
   selectedColor,
 }: WidgetProps) => {
   const dispatch = useDispatch();
+  const [linkedBox, setLinkedBox] = useState(linked);
 
-  const colors: Colors = {
-    blue: "#2E3A8C",
-    green: "#3B755F",
-    beige: "#F2EBDB",
-    white: "#FFFFFF",
-    black: "#212121",
-  };
-  console.log({ selectedColor, color: colors[selectedColor] });
   const updateColor = (color: string) => {
     dispatch(updateWidgetColor({ id, color }));
   };
@@ -67,9 +68,9 @@ const Widget = ({
     );
   };
 
-  const updateLinked = (linked: boolean) => {
-    console.log(linked);
-    // dispatch(updateLinkToProfile({ id, isLinked: linked }));
+  const toggleLinked = () => {
+    setLinkedBox(!linked);
+    dispatch(updateLinkToProfile({ id, isLinked: !linkedBox }));
   };
 
   return (
@@ -102,13 +103,10 @@ const Widget = ({
             weight="regular"
             color="#3B755F"
             text="Link to Public Profile"
-            tooltipText="This is some tooltip text that appears when hovering over the 'i' icon."
+            tooltipText="This widget links directly to your public profile so that you can easily share your impact with your customers. Turn it off here if you do not want the badge to link to it."
           />
           <CheckboxContainer>
-            <Checkbox
-              checked={linked}
-              onChange={(e) => updateLinked(e.target.checked)}
-            />
+            <Checkbox checked={linkedBox} onChange={toggleLinked} />
           </CheckboxContainer>
         </WidgetRow>
         <WidgetRow>

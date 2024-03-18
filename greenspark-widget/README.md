@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Product Widget App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application that allows users to view and customize product widgets. The widgets represent environmental impacts such as carbon offset, trees planted, or plastic bottles collected.
 
-## Available Scripts
+## Why this approach?
 
-In the project directory, you can run:
+The application is built using React with TypeScript for a robust front-end architecture. TypeScript provides static typing, which enhances code quality and readability. For state management, Redux Toolkit (RTK) with RTK Query is used due to its simplicity and efficiency in handling server state and asynchronous logic.
 
-### `npm start`
+Styled Components are utilized for styling because of their theming capabilities and power to dynamically alter styles based on props, which is essential for changing widget colors as required by the task.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Fetch and display product widgets from an API.
+- Update widget settings (color, active state, and linked state) using client-side state management.
+- Ensure only one widget is active at a time.
+- Use RTK Query for efficient server state management.
+- Customized widget styling with Styled Components.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run this project, you need to have Node.js installed on your system.
 
-### `npm run build`
+1. Clone the repository:
+2. Navigate to the project directory:
+   cd my-widget-app
+3. Install dependencies:
+   npm install
+4. Run the Application
+   npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This will launch the app in development mode. Open http://localhost:3000 to view it in your browser. The page will reload when you make changes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application presents a list of product widgets that can be customized:
 
-### `npm run eject`
+# View Widgets
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    Upon loading, the app fetches widget data from the API and displays it.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Customize Widgets
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    Users can change the color of the widgets, activate/deactivate them, and link/unlink them from their public profile using controls provided in the UI.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Active State
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Only one widget can be active at a time. Activating one widget will automatically deactivate the others.

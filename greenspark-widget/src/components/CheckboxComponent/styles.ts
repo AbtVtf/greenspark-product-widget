@@ -59,6 +59,6 @@ export const StyledCheckbox = styled.div<{ checked: boolean }>`
   }
 
   &:hover::after {
-    transform: translate(-50%, -50%) scale(1); // Scale up the pseudo-element on hover
+    transform: translate(-50%, -50%) scale(1);
   }
 `;

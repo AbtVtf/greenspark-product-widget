@@ -7,10 +7,8 @@ type ColorBoxProps = {
   onClick: () => void;
 };
 
-export const ColorBox: React.FC<ColorBoxProps> = ({
-  color,
-  selected,
-  onClick,
-}) => {
+const ColorBox = ({ color, selected, onClick }: ColorBoxProps) => {
   return <Box bgcolor={color} selected={selected} onClick={onClick} />;
 };
+
+export default ColorBox;

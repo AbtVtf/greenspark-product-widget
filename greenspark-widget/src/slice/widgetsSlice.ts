@@ -29,7 +29,6 @@ const widgetsSlice = createSlice({
       state,
       action: PayloadAction<{ id: number; color: string }>
     ) => {
-      console.log(action.payload, state.widgets[0]);
       const index = state.widgets.findIndex((w) => w.id === action.payload.id);
       if (index !== -1) {
         state.widgets[index].selectedColor = action.payload.color;
@@ -39,7 +38,6 @@ const widgetsSlice = createSlice({
       state,
       action: PayloadAction<{ id: number; isLinked: boolean }>
     ) => {
-      console.log(action.payload);
       const index = state.widgets.findIndex((w) => w.id === action.payload.id);
       if (index !== -1) {
         state.widgets[index].linked = action.payload.isLinked;

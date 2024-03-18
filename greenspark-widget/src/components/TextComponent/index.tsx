@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Icon, InfoIcon, Text, TextContainer, Tooltip } from "./styles";
+import {
+  Icon,
+  InfoIcon,
+  ProfileButtonContainer,
+  Text,
+  TextContainer,
+  Tooltip,
+} from "./styles";
 import info from "../../assets/info.svg";
 
 type CustomTextProps = {
@@ -10,14 +17,32 @@ type CustomTextProps = {
   tooltipText?: string;
 };
 
-export const CustomText: React.FC<CustomTextProps> = ({
+export const CustomText = ({
   size,
   weight,
   color,
   text,
   tooltipText,
-}) => {
+}: CustomTextProps) => {
   const [isTooltipVisible, setTooltipVisible] = useState(false);
+  const [hideTimeoutId, setHideTimeoutId] = useState<NodeJS.Timeout | null>(
+    null
+  );
+
+  const showTooltip = () => {
+    if (hideTimeoutId) {
+      clearTimeout(hideTimeoutId);
+      setHideTimeoutId(null);
+    }
+    setTooltipVisible(true);
+  };
+
+  const hideTooltip = () => {
+    const id = setTimeout(() => {
+      setTooltipVisible(false);
+    }, 300);
+    setHideTimeoutId(id);
+  };
 
   return (
     <TextContainer>
@@ -29,15 +54,23 @@ export const CustomText: React.FC<CustomTextProps> = ({
             <Icon
               src={info}
               alt="info"
-              onMouseEnter={() => setTooltipVisible(true)}
-              onMouseLeave={() => setTooltipVisible(false)}
+              onMouseEnter={showTooltip}
+              onMouseLeave={hideTooltip}
             />
             {isTooltipVisible && (
               <Tooltip
-                onMouseEnter={() => setTooltipVisible(true)}
-                onMouseLeave={() => setTooltipVisible(false)}
+                onMouseEnter={showTooltip}
+                onMouseLeave={hideTooltip}
+                isVisible={isTooltipVisible}
               >
-                {tooltipText}
+                <Text size={14} weight="regular" color="#212121">
+                  {tooltipText}
+                </Text>
+                <ProfileButtonContainer onClick={() => {}}>
+                  <Text size={14} weight="regular" color="#3B755F">
+                    View Public Profile
+                  </Text>
+                </ProfileButtonContainer>
               </Tooltip>
             )}
           </>

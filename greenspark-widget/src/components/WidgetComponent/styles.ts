@@ -25,7 +25,7 @@ export const WidgetHeader = styled.div<{
 `;
 
 export const Logo = styled.img`
-  width: 43px;
+  width: 48px;
   height: 100px;
 `;
 
@@ -50,7 +50,6 @@ export const WidgetRow = styled.div`
   justify-content: space-between;
   height: 24px;
   align-items: center;
-  //   padding: 0 3px;
 `;
 
 export const ColorBoxContainer = styled.div`
