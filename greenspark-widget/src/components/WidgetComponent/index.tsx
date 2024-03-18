@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Checkbox from "../CheckboxComponent";
-import { ColorBox } from "../ColorBox";
 import { CustomText } from "../TextComponent";
 import {
   CheckboxContainer,
@@ -22,6 +21,7 @@ import {
   updateWidget,
   updateWidgetColor,
 } from "../../slice/widgetsSlice";
+import ColorBox from "../ColorBox";
 
 interface WidgetProps {
   id: number;
